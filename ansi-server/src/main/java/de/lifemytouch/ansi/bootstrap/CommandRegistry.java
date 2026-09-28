@@ -1,5 +1,8 @@
 package de.lifemytouch.ansi.bootstrap;
 
+import de.lifemytouch.ansi.build.BuildCommand;
+import de.lifemytouch.ansi.coin.commands.CoinsCommand;
+import de.lifemytouch.ansi.coin.completer.CoinsCompleter;
 import de.lifemytouch.ansi.dependency.ServerContext;
 import de.lifemytouch.ansi.fly.FlyCommand;
 import de.lifemytouch.ansi.gamemode.GamemodeCommand;
@@ -21,6 +24,8 @@ public class CommandRegistry {
     public void register() {
         register("gm", new GamemodeCommand());
         register("fly", new FlyCommand(serverContext.getFlyService()));
+        register("build", new BuildCommand(serverContext.getBuildService()));
+        register("coins", new CoinsCommand(serverContext.getCoinService()), new CoinsCompleter());
     }
 
     private void register(String name, CommandExecutor commandExecutor) {

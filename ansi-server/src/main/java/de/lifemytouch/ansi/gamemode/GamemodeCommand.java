@@ -12,11 +12,8 @@ import org.jspecify.annotations.NonNull;
 public class GamemodeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(
-            @NonNull CommandSender sender,
-            @NonNull Command command,
-            @NonNull String label,
-            String @NonNull [] args
-    ) {
+            @NonNull CommandSender sender, @NonNull Command command,
+            @NonNull String label, String @NonNull [] args) {
         if (!(sender instanceof Player player)) {
             return false;
         }

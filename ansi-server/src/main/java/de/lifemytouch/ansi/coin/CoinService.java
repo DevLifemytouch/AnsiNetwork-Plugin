@@ -91,4 +91,12 @@ public class CoinService {
             scoreboardUpdater.accept(player);
         }
     }
+
+    public UUID findUuidByName(String name) {
+        return repository.findUuidByName(name);
+    }
+
+    public void updatePlayerName(UUID uuid, String name) {
+        repository.updatePlayerName(uuid, name);
+    }
 }

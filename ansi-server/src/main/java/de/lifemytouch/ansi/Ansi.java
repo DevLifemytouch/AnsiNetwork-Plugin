@@ -16,6 +16,8 @@ public final class Ansi extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if(serverInitializer != null) serverInitializer.shutdown();
+
         getLogger().info("[Ansi-Network] \"ansi-server\" wurde deaktiviert!");
     }
 }

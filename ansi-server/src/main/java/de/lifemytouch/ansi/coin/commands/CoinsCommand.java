@@ -10,6 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
+
 public class CoinsCommand implements CommandExecutor {
 
     private final CoinService coinService;
@@ -55,27 +57,41 @@ public class CoinsCommand implements CommandExecutor {
 
     private void handleOtherBalance(Player player, String[] args) {
 
-        if(args.length != 2) {
+        if (args.length != 2) {
             sendHelp(player);
             return;
         }
 
-        OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
+        UUID targetUUID = coinService.findUuidByName(args[1]);
 
-        if(!target.hasPlayedBefore() && !target.isOnline()) {
-            player.sendMessage(Messages.getPLAYER_NOT_ONLINE());
+        if (targetUUID == null) {
+            player.sendMessage(
+                    Messages.getPREFIX()
+                            + "§cDieser Spieler wurde nicht gefunden."
+            );
             return;
         }
 
-        if(coinService.isHidden(target.getUniqueId())) {
-            player.sendMessage(Messages.getPREFIX() + "§6" + target.getName() + "§7 hat seine Coins versteckt.");
+        if (coinService.isHidden(targetUUID)) {
+            player.sendMessage(
+                    Messages.getPREFIX()
+                            + "§6"
+                            + args[1]
+                            + "§7 hat seine Coins versteckt."
+            );
             return;
         }
 
-        long coins = coinService.getCoins(target.getUniqueId());
+        long coins = coinService.getCoins(targetUUID);
 
-        player.sendMessage(Messages.getPREFIX() + "§6" + target.getName() + "§7 hat §e" + coins + " Coins§7.");
-
+        player.sendMessage(
+                Messages.getPREFIX()
+                        + "§6"
+                        + args[1]
+                        + "§7 hat §e"
+                        + coins
+                        + " Coins§7."
+        );
     }
 
     private void handleHide(Player player, String[] args) {

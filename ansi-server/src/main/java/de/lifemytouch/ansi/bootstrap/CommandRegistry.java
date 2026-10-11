@@ -6,6 +6,7 @@ import de.lifemytouch.ansi.coin.completer.CoinsCompleter;
 import de.lifemytouch.ansi.dependency.ServerContext;
 import de.lifemytouch.ansi.fly.FlyCommand;
 import de.lifemytouch.ansi.gamemode.GamemodeCommand;
+import de.lifemytouch.ansi.misc.DiscordCommand;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
@@ -26,17 +27,14 @@ public class CommandRegistry {
         register("fly", new FlyCommand(serverContext.getFlyService()));
         register("build", new BuildCommand(serverContext.getBuildService()));
         register("coins", new CoinsCommand(serverContext.getCoinService()), new CoinsCompleter());
+        register("discord", new DiscordCommand());
     }
 
     private void register(String name, CommandExecutor commandExecutor) {
         register(name, commandExecutor, null);
     }
 
-    private void register(
-            String name,
-            CommandExecutor executor,
-            TabCompleter completer
-    ) {
+    private void register(String name, CommandExecutor executor, TabCompleter completer) {
         PluginCommand command = javaPlugin.getCommand(name);
 
         if (command == null) {
@@ -47,8 +45,6 @@ public class CommandRegistry {
 
         command.setExecutor(executor);
 
-        if (completer != null) {
-            command.setTabCompleter(completer);
-        }
+        if (completer != null) command.setTabCompleter(completer);
     }
 }

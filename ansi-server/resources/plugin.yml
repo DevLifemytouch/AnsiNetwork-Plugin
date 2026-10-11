@@ -6,6 +6,9 @@ api-version: '1.21'
 load: POSTWORLD
 
 commands:
+  discord:
+    aliases: [dc]
+    description: Schickt einen Discord-Link
   gm:
     aliases: [gamemode]
     description: Verwaltet den Gamemode eines Spielers

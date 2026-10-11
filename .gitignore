@@ -96,6 +96,7 @@ $RECYCLE.BIN/
 *.lnk
 
 target/
+ansi-server/src/main/resources/database.yml
 
 pom.xml.tag
 pom.xml.releaseBackup

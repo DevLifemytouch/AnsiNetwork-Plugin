@@ -1,5 +1,7 @@
 package de.lifemytouch.ansi.core.time;
 
+import de.lifemytouch.ansi.core.util.Log;
+
 import java.time.Duration;
 
 public class DurationParser {
@@ -25,6 +27,7 @@ public class DurationParser {
         try {
             amount = Long.parseLong(numberPart);
         } catch (NumberFormatException exception) {
+            Log.error("Error parsing duration " + exception.getClass());
             throw new IllegalArgumentException();
         }
 

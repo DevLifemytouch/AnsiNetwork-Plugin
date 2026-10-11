@@ -1,7 +1,10 @@
 package de.lifemytouch.ansi.core.item;
 
+import de.lifemytouch.ansi.core.util.Log;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -15,18 +18,54 @@ import java.util.UUID;
 
 public class ItemBuilder {
 
-    public static ItemStack createItem(Material material, String name, List<String> lore) {
+    private String name;
+    private String lore;
+    private Player player;
+    private Material material;
+
+    public static ItemBuilder buildItem() {
+        return new ItemBuilder();
+    }
+
+    public ItemBuilder setItem(Material material) {
+        this.material = material;
+        return this;
+    }
+
+    public ItemBuilder setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ItemBuilder setLore(String lore) {
+        this.lore = lore;
+        return this;
+    }
+
+    public ItemBuilder setSkullOwner(Player player) {
+        this.player = player;
+        return this;
+    }
+
+    public ItemStack build() {
+        if (material == null) {
+            Log.error("Material wurde nicht gesetzt!");
+            throw new IllegalStateException();
+        }
 
         ItemStack item = new ItemStack(material);
 
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);
-        meta.setLore(lore);
+        ItemMeta itemMeta = item.getItemMeta();
 
-        item.setItemMeta(meta);
+        if (name != null) itemMeta.displayName(Component.text(name));
+        if (lore != null) itemMeta.lore(List.of(Component.text(lore)));
+        if (player != null && itemMeta instanceof SkullMeta skullMeta) skullMeta.setOwningPlayer(player);
+
+        item.setItemMeta(itemMeta);
 
         return item;
     }
+
 
     public static ItemStack createCustomHead(String value, String name, List<String> lore) {
 

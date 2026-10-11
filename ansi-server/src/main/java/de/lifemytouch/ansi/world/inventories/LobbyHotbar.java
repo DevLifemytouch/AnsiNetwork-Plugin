@@ -4,8 +4,6 @@ import de.lifemytouch.ansi.core.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.List;
 
@@ -21,35 +19,18 @@ public class LobbyHotbar {
                 List.of("§7Öffnet die Cosmetics")
         ));
 
-
-        inventory.setItem(4, ItemBuilder.createItem(
-                Material.COMPASS,
-                "§c§lNavigator",
-                List.of(
-                        "§7Öffnet die den Navigator!"
-                )
-        ));
-        inventory.setItem(7, ItemBuilder.createItem(
-                Material.NETHER_STAR,
-                "§d§lLobby Switcher",
-                List.of(
-                        "§7Öffnet die Serverauswahl!"
-                )
-        ));
-
-        ItemStack profile = ItemBuilder.createItem(
-                Material.PLAYER_HEAD,
-                "§9§lProfil",
-                List.of(
-                        "§7Öffnet dein Profile!"
-                )
+        inventory.setItem(4,
+                ItemBuilder.buildItem().setItem(Material.COMPASS).setLore("§7Öffnet dir den Navigator!").build()
         );
 
-        SkullMeta meta = (SkullMeta) profile.getItemMeta();
-        meta.setOwningPlayer(player);
-        profile.setItemMeta(meta);
+        inventory.setItem(7,
+                ItemBuilder.buildItem().setItem(Material.NETHER_STAR).setLore("§7Öffnet die Serverauswahl").build()
+        );
 
-        inventory.setItem(8, profile);
+        inventory.setItem(8,
+                ItemBuilder.buildItem().setItem(Material.PLAYER_HEAD).setName("§9§lProfil")
+                        .setLore("§7Öffnet dein Profil!").setSkullOwner(player).build()
+        );
 
     }
 

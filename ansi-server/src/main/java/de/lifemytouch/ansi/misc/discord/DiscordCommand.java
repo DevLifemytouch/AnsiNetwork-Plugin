@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.misc;
+package de.lifemytouch.ansi.misc.discord;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import org.bukkit.command.Command;

@@ -1,6 +1,7 @@
 package de.lifemytouch.ansi;
 
 import de.lifemytouch.ansi.bootstrap.initializer.ServerInitializer;
+import de.lifemytouch.ansi.core.util.Log;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Ansi extends JavaPlugin {
@@ -8,7 +9,7 @@ public final class Ansi extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("[Ansi-Network] \"ansi-server\" wurde aktiviert!");
+        Log.info("[Ansi-Network] \"ansi-server\" wurde aktiviert!");
 
         serverInitializer = new ServerInitializer(this);
         serverInitializer.initialize();
@@ -18,6 +19,6 @@ public final class Ansi extends JavaPlugin {
     public void onDisable() {
         if(serverInitializer != null) serverInitializer.shutdown();
 
-        getLogger().info("[Ansi-Network] \"ansi-server\" wurde deaktiviert!");
+        Log.info("[Ansi-Network] \"ansi-server\" wurde deaktiviert!");
     }
 }

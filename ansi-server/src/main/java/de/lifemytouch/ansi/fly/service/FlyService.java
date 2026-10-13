@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.fly;
+package de.lifemytouch.ansi.fly.service;
 
 import org.bukkit.entity.Player;
 

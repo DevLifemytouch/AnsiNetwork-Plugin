@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.database;
+package de.lifemytouch.ansi.database.config;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

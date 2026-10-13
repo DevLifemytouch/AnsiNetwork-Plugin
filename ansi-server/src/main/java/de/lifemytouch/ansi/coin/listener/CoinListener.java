@@ -1,6 +1,6 @@
 package de.lifemytouch.ansi.coin.listener;
 
-import de.lifemytouch.ansi.coin.CoinService;
+import de.lifemytouch.ansi.coin.service.CoinService;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

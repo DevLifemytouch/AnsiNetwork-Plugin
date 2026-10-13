@@ -1,6 +1,6 @@
-package de.lifemytouch.ansi.coin;
+package de.lifemytouch.ansi.coin.repository;
 
-import de.lifemytouch.ansi.database.DatabaseManager;
+import de.lifemytouch.ansi.database.service.DatabaseService;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.Connection;
@@ -12,11 +12,11 @@ import java.util.UUID;
 public class CoinRepository {
 
     private final JavaPlugin javaPlugin;
-    private final DatabaseManager databaseManager;
+    private final DatabaseService databaseService;
 
-    public CoinRepository(JavaPlugin javaPlugin, DatabaseManager databaseManager) {
+    public CoinRepository(JavaPlugin javaPlugin, DatabaseService databaseService) {
         this.javaPlugin = javaPlugin;
-        this.databaseManager = databaseManager;
+        this.databaseService = databaseService;
 
         createTable();
     }
@@ -34,7 +34,7 @@ public class CoinRepository {
                """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.executeUpdate();
@@ -51,7 +51,7 @@ public class CoinRepository {
                 """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.setString(1, uuid.toString());
@@ -78,7 +78,7 @@ public class CoinRepository {
             """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.setLong(1, amount);
@@ -102,7 +102,7 @@ public class CoinRepository {
                 """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.setString(1, uuid.toString());
@@ -134,7 +134,7 @@ public class CoinRepository {
             """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.setBoolean(1, hidden);
@@ -158,7 +158,7 @@ public class CoinRepository {
             """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.setString(1, name);
@@ -189,7 +189,7 @@ public class CoinRepository {
             """;
 
         try (
-                Connection connection = databaseManager.getConnection();
+                Connection connection = databaseService.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
             statement.setString(1, uuid.toString());

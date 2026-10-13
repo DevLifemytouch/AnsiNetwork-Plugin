@@ -1,11 +1,11 @@
 package de.lifemytouch.ansi.dependency;
 
-import de.lifemytouch.ansi.build.BuildService;
-import de.lifemytouch.ansi.coin.CoinRepository;
-import de.lifemytouch.ansi.coin.CoinService;
-import de.lifemytouch.ansi.database.DatabaseConfig;
-import de.lifemytouch.ansi.database.DatabaseManager;
-import de.lifemytouch.ansi.fly.FlyService;
+import de.lifemytouch.ansi.build.service.BuildService;
+import de.lifemytouch.ansi.coin.repository.CoinRepository;
+import de.lifemytouch.ansi.coin.service.CoinService;
+import de.lifemytouch.ansi.database.config.DatabaseConfig;
+import de.lifemytouch.ansi.database.service.DatabaseService;
+import de.lifemytouch.ansi.fly.service.FlyService;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ServerContext {
@@ -16,15 +16,15 @@ public class ServerContext {
     private final CoinRepository coinRepository;
     private final CoinService coinService;
     private final DatabaseConfig databaseConfig;
-    private final DatabaseManager databaseManager;
+    private final DatabaseService databaseService;
 
     public ServerContext(JavaPlugin javaPlugin) {
         this.javaPlugin = javaPlugin;
 
         this.databaseConfig = new DatabaseConfig(javaPlugin);
-        this.databaseManager = new DatabaseManager(javaPlugin, databaseConfig);
+        this.databaseService = new DatabaseService(javaPlugin, databaseConfig);
 
-        this.coinRepository = new CoinRepository(javaPlugin, databaseManager);
+        this.coinRepository = new CoinRepository(javaPlugin, databaseService);
 
         this.flyService = new FlyService();
         this.buildService = new BuildService();
@@ -55,8 +55,8 @@ public class ServerContext {
         return databaseConfig;
     }
 
-    public DatabaseManager getDatabaseManager() {
-        return databaseManager;
+    public DatabaseService getDatabaseManager() {
+        return databaseService;
     }
 
 }

@@ -1,6 +1,6 @@
-package de.lifemytouch.ansi.coin.commands;
+package de.lifemytouch.ansi.coin.command;
 
-import de.lifemytouch.ansi.coin.CoinService;
+import de.lifemytouch.ansi.coin.service.CoinService;
 import de.lifemytouch.ansi.core.text.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;

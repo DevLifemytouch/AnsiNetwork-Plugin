@@ -1,18 +1,19 @@
-package de.lifemytouch.ansi.database;
+package de.lifemytouch.ansi.database.service;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import de.lifemytouch.ansi.database.config.DatabaseConfig;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DatabaseManager implements AutoCloseable {
+public class DatabaseService implements AutoCloseable {
 
     private final JavaPlugin javaPlugin;
     private final HikariDataSource dataSource;
 
-    public DatabaseManager(JavaPlugin javaPlugin, DatabaseConfig databaseConfig) {
+    public DatabaseService(JavaPlugin javaPlugin, DatabaseConfig databaseConfig) {
         this.javaPlugin = javaPlugin;
 
         HikariConfig hikariConfig = new HikariConfig();

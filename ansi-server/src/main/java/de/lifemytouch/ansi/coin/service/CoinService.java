@@ -1,5 +1,6 @@
-package de.lifemytouch.ansi.coin;
+package de.lifemytouch.ansi.coin.service;
 
+import de.lifemytouch.ansi.coin.repository.CoinRepository;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

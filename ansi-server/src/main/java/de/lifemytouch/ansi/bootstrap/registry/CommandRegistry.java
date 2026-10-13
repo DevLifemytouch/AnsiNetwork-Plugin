@@ -1,12 +1,13 @@
-package de.lifemytouch.ansi.bootstrap;
+package de.lifemytouch.ansi.bootstrap.registry;
 
-import de.lifemytouch.ansi.build.BuildCommand;
-import de.lifemytouch.ansi.coin.commands.CoinsCommand;
+import de.lifemytouch.ansi.build.command.BuildCommand;
+import de.lifemytouch.ansi.coin.command.CoinsCommand;
 import de.lifemytouch.ansi.coin.completer.CoinsCompleter;
 import de.lifemytouch.ansi.dependency.ServerContext;
-import de.lifemytouch.ansi.fly.FlyCommand;
-import de.lifemytouch.ansi.gamemode.GamemodeCommand;
+import de.lifemytouch.ansi.fly.command.FlyCommand;
+import de.lifemytouch.ansi.gamemode.command.GamemodeCommand;
 import de.lifemytouch.ansi.misc.DiscordCommand;
+import de.lifemytouch.ansi.misc.UUIDCommand;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
@@ -28,6 +29,7 @@ public class CommandRegistry {
         register("build", new BuildCommand(serverContext.getBuildService()));
         register("coins", new CoinsCommand(serverContext.getCoinService()), new CoinsCompleter());
         register("discord", new DiscordCommand());
+        register("uuid", new UUIDCommand());
     }
 
     private void register(String name, CommandExecutor commandExecutor) {

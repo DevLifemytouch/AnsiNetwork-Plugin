@@ -1,5 +1,6 @@
-package de.lifemytouch.ansi.bootstrap;
+package de.lifemytouch.ansi.bootstrap.initializer;
 
+import de.lifemytouch.ansi.bootstrap.registry.CommandRegistry;
 import de.lifemytouch.ansi.coin.listener.CoinListener;
 import de.lifemytouch.ansi.dependency.ServerContext;
 import org.bukkit.plugin.PluginManager;

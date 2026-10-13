@@ -1,6 +1,6 @@
 package de.lifemytouch.ansi;
 
-import de.lifemytouch.ansi.bootstrap.ServerInitializer;
+import de.lifemytouch.ansi.bootstrap.initializer.ServerInitializer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Ansi extends JavaPlugin {

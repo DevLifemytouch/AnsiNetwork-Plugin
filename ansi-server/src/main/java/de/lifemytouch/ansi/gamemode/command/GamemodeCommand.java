@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.gamemode;
+package de.lifemytouch.ansi.gamemode.command;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import org.bukkit.Bukkit;

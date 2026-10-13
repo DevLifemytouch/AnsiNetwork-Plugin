@@ -6,6 +6,8 @@ api-version: '1.21'
 load: POSTWORLD
 
 commands:
+  feed:
+    description: Füttert dich
   heal:
     description: Heilt den Spieler
   discord:

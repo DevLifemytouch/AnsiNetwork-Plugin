@@ -7,6 +7,7 @@ import de.lifemytouch.ansi.dependency.ServerContext;
 import de.lifemytouch.ansi.fly.command.FlyCommand;
 import de.lifemytouch.ansi.gamemode.command.GamemodeCommand;
 import de.lifemytouch.ansi.misc.discord.DiscordCommand;
+import de.lifemytouch.ansi.misc.food.FoodCommand;
 import de.lifemytouch.ansi.misc.heal.HealCommand;
 import de.lifemytouch.ansi.misc.uuid.UUIDCommand;
 import org.bukkit.command.CommandExecutor;
@@ -32,6 +33,7 @@ public class CommandRegistry {
         register("discord", new DiscordCommand());
         register("uuid", new UUIDCommand());
         register("heal", new HealCommand());
+        register("food", new FoodCommand());
     }
 
     private void register(String name, CommandExecutor commandExecutor) {

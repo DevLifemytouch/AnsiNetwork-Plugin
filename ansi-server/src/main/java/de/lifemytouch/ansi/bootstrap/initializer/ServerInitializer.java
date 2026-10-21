@@ -21,6 +21,8 @@ public class ServerInitializer {
 
         commandRegistry = new CommandRegistry(javaPlugin, serverContext);
         commandRegistry.register();
+
+        registerListeners();
     }
 
     public void registerListeners() {

@@ -2,7 +2,6 @@ package de.lifemytouch.ansi.misc.heal;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import de.lifemytouch.ansi.core.util.Log;
-import org.bukkit.Warning;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

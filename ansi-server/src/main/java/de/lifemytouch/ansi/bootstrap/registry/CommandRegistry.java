@@ -9,6 +9,7 @@ import de.lifemytouch.ansi.gamemode.command.GamemodeCommand;
 import de.lifemytouch.ansi.misc.discord.DiscordCommand;
 import de.lifemytouch.ansi.misc.food.FoodCommand;
 import de.lifemytouch.ansi.misc.heal.HealCommand;
+import de.lifemytouch.ansi.misc.teleport.command.TeleportCommand;
 import de.lifemytouch.ansi.misc.uuid.UUIDCommand;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
@@ -34,6 +35,7 @@ public class CommandRegistry {
         register("uuid", new UUIDCommand());
         register("heal", new HealCommand());
         register("food", new FoodCommand());
+        register("teleport", new TeleportCommand(serverContext.getTeleportService()));
     }
 
     private void register(String name, CommandExecutor commandExecutor) {

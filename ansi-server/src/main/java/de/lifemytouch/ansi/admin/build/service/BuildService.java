@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.build.service;
+package de.lifemytouch.ansi.admin.build.service;
 
 import org.bukkit.entity.Player;
 

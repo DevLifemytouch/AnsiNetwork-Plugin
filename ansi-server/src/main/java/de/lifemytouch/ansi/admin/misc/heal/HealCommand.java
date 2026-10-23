@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.misc.heal;
+package de.lifemytouch.ansi.admin.misc.heal;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import de.lifemytouch.ansi.core.util.Log;

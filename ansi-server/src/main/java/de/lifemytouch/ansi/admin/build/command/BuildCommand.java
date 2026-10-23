@@ -1,6 +1,6 @@
-package de.lifemytouch.ansi.build.command;
+package de.lifemytouch.ansi.admin.build.command;
 
-import de.lifemytouch.ansi.build.service.BuildService;
+import de.lifemytouch.ansi.admin.build.service.BuildService;
 import de.lifemytouch.ansi.core.text.Messages;
 import de.lifemytouch.ansi.world.inventories.LobbyHotbar;
 import org.bukkit.GameMode;

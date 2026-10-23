@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.misc.uuid;
+package de.lifemytouch.ansi.admin.misc.uuid;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import org.bukkit.Bukkit;

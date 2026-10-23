@@ -72,3 +72,6 @@ commands:
   anticheat:
     aliases: [ac]
     description: Verwaltet das AntiCheat
+  location:
+    aliases: [loc]
+    description: Verwaltet Locations auf dem Server

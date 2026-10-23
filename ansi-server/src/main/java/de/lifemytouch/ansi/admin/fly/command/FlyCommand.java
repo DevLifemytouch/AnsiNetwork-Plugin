@@ -1,7 +1,7 @@
-package de.lifemytouch.ansi.fly.command;
+package de.lifemytouch.ansi.admin.fly.command;
 
 import de.lifemytouch.ansi.core.text.Messages;
-import de.lifemytouch.ansi.fly.service.FlyService;
+import de.lifemytouch.ansi.admin.fly.service.FlyService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

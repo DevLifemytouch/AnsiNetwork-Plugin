@@ -1,7 +1,7 @@
-package de.lifemytouch.ansi.misc.teleport.command;
+package de.lifemytouch.ansi.admin.misc.teleport.command;
 
 import de.lifemytouch.ansi.core.text.Messages;
-import de.lifemytouch.ansi.misc.teleport.service.TeleportService;
+import de.lifemytouch.ansi.admin.misc.teleport.service.TeleportService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.gamemode.service;
+package de.lifemytouch.ansi.admin.gamemode.service;
 
 public class GamemodeService {
 

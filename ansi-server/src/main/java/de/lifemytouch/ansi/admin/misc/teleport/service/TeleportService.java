@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.misc.teleport.service;
+package de.lifemytouch.ansi.admin.misc.teleport.service;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import org.bukkit.Bukkit;

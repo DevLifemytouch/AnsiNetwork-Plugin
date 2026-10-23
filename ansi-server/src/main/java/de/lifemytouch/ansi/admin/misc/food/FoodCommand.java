@@ -1,4 +1,4 @@
-package de.lifemytouch.ansi.misc.food;
+package de.lifemytouch.ansi.admin.misc.food;
 
 import de.lifemytouch.ansi.core.text.Messages;
 import de.lifemytouch.ansi.core.util.Log;

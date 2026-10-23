@@ -1,16 +1,17 @@
 package de.lifemytouch.ansi.bootstrap.registry;
 
-import de.lifemytouch.ansi.build.command.BuildCommand;
+import de.lifemytouch.ansi.admin.build.command.BuildCommand;
+import de.lifemytouch.ansi.admin.location.command.LocationCommand;
 import de.lifemytouch.ansi.coin.command.CoinsCommand;
 import de.lifemytouch.ansi.coin.completer.CoinsCompleter;
 import de.lifemytouch.ansi.dependency.ServerContext;
-import de.lifemytouch.ansi.fly.command.FlyCommand;
-import de.lifemytouch.ansi.gamemode.command.GamemodeCommand;
+import de.lifemytouch.ansi.admin.fly.command.FlyCommand;
+import de.lifemytouch.ansi.admin.gamemode.command.GamemodeCommand;
 import de.lifemytouch.ansi.misc.discord.DiscordCommand;
-import de.lifemytouch.ansi.misc.food.FoodCommand;
-import de.lifemytouch.ansi.misc.heal.HealCommand;
-import de.lifemytouch.ansi.misc.teleport.command.TeleportCommand;
-import de.lifemytouch.ansi.misc.uuid.UUIDCommand;
+import de.lifemytouch.ansi.admin.misc.food.FoodCommand;
+import de.lifemytouch.ansi.admin.misc.heal.HealCommand;
+import de.lifemytouch.ansi.admin.misc.teleport.command.TeleportCommand;
+import de.lifemytouch.ansi.admin.misc.uuid.UUIDCommand;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
@@ -36,6 +37,7 @@ public class CommandRegistry {
         register("heal", new HealCommand());
         register("food", new FoodCommand());
         register("teleport", new TeleportCommand(serverContext.getTeleportService()));
+        register("location", new LocationCommand(serverContext.getLocationService()));
     }
 
     private void register(String name, CommandExecutor commandExecutor) {

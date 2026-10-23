@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public class CoinRepository {
+public class CoinRepository extends ICoinRepository {
 
     private final JavaPlugin javaPlugin;
     private final DatabaseService databaseService;
@@ -44,6 +44,7 @@ public class CoinRepository {
         }
     }
 
+    @Override
     public long getCoins(UUID uuid) {
 
         String sql = """
@@ -70,6 +71,7 @@ public class CoinRepository {
         }
     }
 
+    @Override
     public void setCoins(UUID uuid, long amount) {
         String sql = """
             UPDATE player_coins
@@ -94,6 +96,7 @@ public class CoinRepository {
         }
     }
 
+    @Override
     public boolean isHidden(UUID uuid) {
         String sql = """
                 SELECT hidden
@@ -126,6 +129,7 @@ public class CoinRepository {
         }
     }
 
+    @Override
     public void setHidden(UUID uuid, boolean hidden) {
         String sql = """
             UPDATE player_coins
@@ -150,6 +154,7 @@ public class CoinRepository {
         }
     }
 
+    @Override
     public UUID findUuidByName(String name) {
         String sql = """
             SELECT uuid
@@ -181,6 +186,7 @@ public class CoinRepository {
         }
     }
 
+    @Override
     public void updatePlayerName(UUID uuid, String name) {
         String sql = """
             INSERT INTO player_coins (uuid, name)

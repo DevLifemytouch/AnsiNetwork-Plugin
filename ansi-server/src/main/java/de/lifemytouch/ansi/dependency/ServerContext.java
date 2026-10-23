@@ -2,6 +2,7 @@ package de.lifemytouch.ansi.dependency;
 
 import de.lifemytouch.ansi.build.service.BuildService;
 import de.lifemytouch.ansi.coin.repository.CoinRepository;
+import de.lifemytouch.ansi.coin.repository.ICoinRepository;
 import de.lifemytouch.ansi.coin.service.CoinService;
 import de.lifemytouch.ansi.database.config.DatabaseConfig;
 import de.lifemytouch.ansi.database.service.DatabaseService;
@@ -14,7 +15,7 @@ public class ServerContext {
     private final JavaPlugin javaPlugin;
     private final FlyService flyService;
     private final BuildService buildService;
-    private final CoinRepository coinRepository;
+    private final ICoinRepository coinRepository;
     private final CoinService coinService;
     private final DatabaseConfig databaseConfig;
     private final DatabaseService databaseService;
@@ -54,7 +55,7 @@ public class ServerContext {
         return teleportService;
     }
 
-    public CoinRepository getCoinRepository() {
+    public ICoinRepository getCoinRepository() {
         return coinRepository;
     }
 

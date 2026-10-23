@@ -1,6 +1,6 @@
 package de.lifemytouch.ansi.coin.service;
 
-import de.lifemytouch.ansi.coin.repository.CoinRepository;
+import de.lifemytouch.ansi.coin.repository.ICoinRepository;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -9,10 +9,10 @@ import java.util.function.Consumer;
 
 public class CoinService {
 
-    private final CoinRepository repository;
+    private final ICoinRepository repository;
     private Consumer<Player> scoreboardUpdater;
 
-    public CoinService(CoinRepository repository) {
+    public CoinService(ICoinRepository repository) {
         this.repository = repository;
     }
 

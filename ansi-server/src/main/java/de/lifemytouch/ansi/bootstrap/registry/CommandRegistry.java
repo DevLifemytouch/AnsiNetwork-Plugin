@@ -2,6 +2,7 @@ package de.lifemytouch.ansi.bootstrap.registry;
 
 import de.lifemytouch.ansi.admin.build.command.BuildCommand;
 import de.lifemytouch.ansi.admin.location.command.LocationCommand;
+import de.lifemytouch.ansi.admin.misc.freeze.command.FreezeCommand;
 import de.lifemytouch.ansi.coin.command.CoinsCommand;
 import de.lifemytouch.ansi.coin.completer.CoinsCompleter;
 import de.lifemytouch.ansi.dependency.ServerContext;
@@ -38,6 +39,7 @@ public class CommandRegistry {
         register("food", new FoodCommand());
         register("teleport", new TeleportCommand(serverContext.getTeleportService()));
         register("location", new LocationCommand(serverContext.getLocationService()));
+        register("freeze", new FreezeCommand(serverContext.getFreezeService()));
     }
 
     private void register(String name, CommandExecutor commandExecutor) {

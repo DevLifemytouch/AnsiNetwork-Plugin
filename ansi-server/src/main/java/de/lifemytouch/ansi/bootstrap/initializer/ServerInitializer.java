@@ -1,5 +1,6 @@
 package de.lifemytouch.ansi.bootstrap.initializer;
 
+import de.lifemytouch.ansi.admin.misc.freeze.listener.FreezeListener;
 import de.lifemytouch.ansi.bootstrap.registry.CommandRegistry;
 import de.lifemytouch.ansi.coin.listener.CoinListener;
 import de.lifemytouch.ansi.dependency.ServerContext;
@@ -29,6 +30,7 @@ public class ServerInitializer {
         PluginManager pluginManager = javaPlugin.getServer().getPluginManager();
 
         pluginManager.registerEvents(new CoinListener(serverContext.getCoinService()), javaPlugin);
+        pluginManager.registerEvents(new FreezeListener(serverContext.getFreezeService()), javaPlugin);
     }
 
     public void shutdown() {

@@ -4,6 +4,7 @@ import de.lifemytouch.ansi.admin.build.service.BuildService;
 import de.lifemytouch.ansi.admin.location.repository.ILocationRepository;
 import de.lifemytouch.ansi.admin.location.repository.LocationRepository;
 import de.lifemytouch.ansi.admin.location.service.LocationService;
+import de.lifemytouch.ansi.admin.misc.freeze.service.FreezeService;
 import de.lifemytouch.ansi.coin.repository.CoinRepository;
 import de.lifemytouch.ansi.coin.repository.ICoinRepository;
 import de.lifemytouch.ansi.coin.service.CoinService;
@@ -25,6 +26,7 @@ public class ServerContext {
     private final DatabaseService databaseService;
     private final TeleportService teleportService;
     private final LocationService locationService;
+    private final FreezeService freezeService;
 
     public ServerContext(JavaPlugin javaPlugin) {
         this.javaPlugin = javaPlugin;
@@ -40,6 +42,7 @@ public class ServerContext {
         this.coinService = new CoinService(coinRepository);
         this.teleportService = new TeleportService();
         this.locationService = new LocationService(locationRepository);
+        this.freezeService = new FreezeService();
     }
 
     public JavaPlugin getJavaPlugin() {
@@ -80,5 +83,9 @@ public class ServerContext {
 
     public LocationService getLocationService() {
         return locationService;
+    }
+
+    public FreezeService getFreezeService() {
+        return freezeService;
     }
 }

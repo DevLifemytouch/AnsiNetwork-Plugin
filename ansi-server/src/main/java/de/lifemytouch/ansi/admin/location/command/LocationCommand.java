@@ -1,14 +1,11 @@
 package de.lifemytouch.ansi.admin.location.command;
 
 import de.lifemytouch.ansi.admin.location.service.LocationService;
-import de.lifemytouch.ansi.core.text.Messages;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import de.lifemytouch.ansi.core.command.BaseCommand;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class LocationCommand implements CommandExecutor {
+public class LocationCommand extends BaseCommand {
 
     private final LocationService locationService;
 
@@ -17,19 +14,14 @@ public class LocationCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                             @NotNull String label, @NotNull String @NotNull [] args) {
+    public String getPermission() {
+        return "ansi.commands.location";
+    }
 
-        if (!(sender instanceof Player player)) return true;
+    @Override
+    public boolean onCommand(@NotNull Player player, @NotNull String @NotNull [] args) {
 
-        if (!player.hasPermission("ansi.commands.location")) {
-            player.sendMessage(Messages.getNO_PERMS());
-            return true;
-        }
-
-        if (args.length == 1) {
-            return locationService.setLocation(player, args[0]);
-        }
+        if (args.length == 1) return locationService.setLocation(player, args[0]);
 
         return locationService.sendHelp(player);
     }

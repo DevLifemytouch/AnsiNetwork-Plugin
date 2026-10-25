@@ -1,14 +1,11 @@
 package de.lifemytouch.ansi.admin.misc.freeze.command;
 
 import de.lifemytouch.ansi.admin.misc.freeze.service.FreezeService;
-import de.lifemytouch.ansi.core.text.Messages;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import de.lifemytouch.ansi.core.command.BaseCommand;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class FreezeCommand implements CommandExecutor {
+public class FreezeCommand extends BaseCommand {
 
     private final FreezeService freezeService;
 
@@ -17,15 +14,12 @@ public class FreezeCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                             @NotNull String label, @NotNull String @NotNull [] args) {
+    public String getPermission() {
+        return "ansi.commands.freeze";
+    }
 
-        if (!(sender instanceof Player player)) return true;
-
-        if (!player.hasPermission("ansi.commands.freeze")) {
-            player.sendMessage(Messages.getNO_PERMS());
-            return true;
-        }
+    @Override
+    public boolean onCommand(@NotNull Player player, @NotNull String @NotNull [] args) {
 
         if (args.length == 1) return freezeService.handleTargetFreeze(player, args);
 

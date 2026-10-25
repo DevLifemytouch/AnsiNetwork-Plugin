@@ -1,14 +1,11 @@
 package de.lifemytouch.ansi.admin.fly.command;
 
-import de.lifemytouch.ansi.core.text.Messages;
+import de.lifemytouch.ansi.core.command.BaseCommand;
 import de.lifemytouch.ansi.admin.fly.service.FlyService;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class FlyCommand implements CommandExecutor {
+public class FlyCommand extends BaseCommand {
 
     private final FlyService flyService;
 
@@ -17,38 +14,15 @@ public class FlyCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                             @NotNull String label, String @NotNull [] args) {
+    public String getPermission() {
+        return "ansi.commands.fly";
+    }
 
-        if (!(sender instanceof Player player)) {
-            return true;
-        }
+    @Override
+    public boolean onCommand(@NotNull Player player, String @NotNull [] args) {
 
-        if (args.length != 0) {
-            player.sendMessage(
-                    Messages.getPREFIX() + "§7Nutze: /fly"
-            );
-            return true;
-        }
+        if (args.length == 0) return flyService.handleFly(player);
 
-        if (!flyService.getPlayerInList(player)) {
-            flyService.setFly(player, true);
-
-            player.sendMessage(
-                    Messages.getPREFIX()
-                            + "§7Der Flugmodus wurde §aaktiviert§7."
-            );
-
-            return true;
-        }
-
-        flyService.setFly(player, false);
-
-        player.sendMessage(
-                Messages.getPREFIX()
-                        + "§7Der Flugmodus wurde §cdeaktiviert§7."
-        );
-
-        return true;
+        return flyService.sendHelp(player);
     }
 }

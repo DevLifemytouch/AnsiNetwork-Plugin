@@ -1,6 +1,7 @@
 package de.lifemytouch.ansi.admin.build.command;
 
 import de.lifemytouch.ansi.admin.build.service.BuildService;
+import de.lifemytouch.ansi.core.command.BaseCommand;
 import de.lifemytouch.ansi.core.text.Messages;
 import de.lifemytouch.ansi.world.inventories.LobbyHotbar;
 import org.bukkit.GameMode;
@@ -10,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class BuildCommand implements CommandExecutor {
+public class BuildCommand extends BaseCommand {
 
     private final BuildService buildService;
 
@@ -19,34 +20,15 @@ public class BuildCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                             @NotNull String label, String @NotNull [] args) {
+    public String getPermission() {
+        return "ansi.commands.build";
+    }
 
-        if(!(sender instanceof Player player)) return true;
+    @Override
+    public boolean onCommand(@NotNull Player player, String @NotNull [] args) {
 
-        if(!player.hasPermission("ansi.commands.build")) {
-            player.sendMessage(Messages.getNO_PERMS());
-            return true;
-        }
+        if(args.length != 0) return buildService.sendHelp(player);
 
-        if(args.length != 0) {
-            player.sendMessage(Messages.getPREFIX() + "§7Nutze: /build");
-            return true;
-        }
-
-        if(buildService.buildList.contains(player)) {
-            buildService.setBuildMode(player, false);
-            player.setGameMode(GameMode.SURVIVAL);
-            player.getInventory().clear();
-            LobbyHotbar.setSpawnItems(player);
-            player.sendMessage(Messages.getPREFIX() + "§7Du bist nun nicht mehr im Build-Modus!");
-        } else {
-            buildService.setBuildMode(player, true);
-            player.setGameMode(GameMode.CREATIVE);
-            player.getInventory().clear();
-            player.sendMessage(Messages.getPREFIX() + "§7Du bist nun im Build-Modus!");
-        }
-
-        return true;
+        return buildService.setBuildMode(player, !buildService.buildList.contains(player));
     }
 }

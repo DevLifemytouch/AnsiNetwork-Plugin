@@ -1,13 +1,17 @@
 package de.lifemytouch.ansi.dependency;
 
+import de.lifemytouch.ansi.Ansi;
 import de.lifemytouch.ansi.admin.build.service.BuildService;
+import de.lifemytouch.ansi.admin.gamemode.service.GamemodeService;
 import de.lifemytouch.ansi.admin.location.repository.ILocationRepository;
 import de.lifemytouch.ansi.admin.location.repository.LocationRepository;
 import de.lifemytouch.ansi.admin.location.service.LocationService;
 import de.lifemytouch.ansi.admin.misc.freeze.service.FreezeService;
+import de.lifemytouch.ansi.admin.system.reload.service.AnsiReloadService;
 import de.lifemytouch.ansi.coin.repository.CoinRepository;
 import de.lifemytouch.ansi.coin.repository.ICoinRepository;
 import de.lifemytouch.ansi.coin.service.CoinService;
+import de.lifemytouch.ansi.core.service.SystemService;
 import de.lifemytouch.ansi.database.config.DatabaseConfig;
 import de.lifemytouch.ansi.database.service.DatabaseService;
 import de.lifemytouch.ansi.admin.fly.service.FlyService;
@@ -17,16 +21,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ServerContext {
 
     private final JavaPlugin javaPlugin;
-    private final FlyService flyService;
-    private final BuildService buildService;
+    private final DatabaseConfig databaseConfig;
+
     private final ICoinRepository coinRepository;
     private final ILocationRepository locationRepository;
+
     private final CoinService coinService;
-    private final DatabaseConfig databaseConfig;
     private final DatabaseService databaseService;
     private final TeleportService teleportService;
     private final LocationService locationService;
     private final FreezeService freezeService;
+    private final FlyService flyService;
+    private final BuildService buildService;
+    private final SystemService systemService;
+    private final GamemodeService gamemodeService;
+    private final AnsiReloadService ansiReloadService;
 
     public ServerContext(JavaPlugin javaPlugin) {
         this.javaPlugin = javaPlugin;
@@ -43,6 +52,9 @@ public class ServerContext {
         this.teleportService = new TeleportService();
         this.locationService = new LocationService(locationRepository);
         this.freezeService = new FreezeService();
+        this.systemService = new SystemService(javaPlugin);
+        this.gamemodeService = new GamemodeService();
+        this.ansiReloadService = new AnsiReloadService(javaPlugin);
     }
 
     public JavaPlugin getJavaPlugin() {
@@ -88,4 +100,16 @@ public class ServerContext {
     public FreezeService getFreezeService() {
         return freezeService;
     }
+
+    public SystemService getSystemService() {
+        return systemService;
+    }
+
+    public GamemodeService getGamemodeService() {
+        return gamemodeService;
+    }
+
+    public ILocationRepository getLocationRepository() { return locationRepository; }
+
+    public AnsiReloadService getAnsiReloadService() { return ansiReloadService; }
 }

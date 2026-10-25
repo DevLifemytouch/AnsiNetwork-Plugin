@@ -26,7 +26,7 @@ public class CoinRepository extends ICoinRepository {
                 CREATE TABLE IF NOT EXISTS player_coins (
                     uuid VARCHAR(36) NOT NULL,
                     name VARCHAR(16) NOT NULL,
-                    coins BIGINT NOT NULL DEFAUlT 0,
+                    coins BIGINT NOT NULL DEFAULT 0,
                     hidden BOOLEAN NOT NULL DEFAULT FALSE,
                     PRIMARY KEY (uuid),
                     UNIQUE KEY unique_player_name (name)

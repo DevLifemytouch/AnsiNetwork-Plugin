@@ -1,26 +1,22 @@
 package de.lifemytouch.ansi.admin.misc.food;
 
+import de.lifemytouch.ansi.core.command.BaseCommand;
 import de.lifemytouch.ansi.core.text.Messages;
-import de.lifemytouch.ansi.core.util.Log;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class FoodCommand implements CommandExecutor {
+public class FoodCommand extends BaseCommand {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                             @NotNull String label, @NotNull String @NotNull [] args) {
+    public String getPermission() {
+        return "ansi.command.food";
+    }
 
-        if (!(sender instanceof Player player)) {
-            Log.warn("Führe es als Spieler aus");
-            return true;
-        }
+    @Override
+    public boolean onCommand(@NotNull Player player, @NotNull String @NotNull [] args) {
 
         player.setSaturation(20);
-        player.sendMessage(Messages.getPREFIX() + "§7Du wurdest §agefüttert§7.");
+        player.sendMessage(Messages.getPREFIX() + "§7Dein Hunger wurde gefüllt.");
 
         return true;
     }

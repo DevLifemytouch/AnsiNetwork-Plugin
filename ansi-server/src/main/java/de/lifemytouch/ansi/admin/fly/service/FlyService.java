@@ -1,5 +1,6 @@
 package de.lifemytouch.ansi.admin.fly.service;
 
+import de.lifemytouch.ansi.core.text.Messages;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -9,29 +10,29 @@ public class FlyService {
 
     private List<Player> flyList = new ArrayList<>();
 
-    public void setFly(Player player, boolean flying) {
+    public boolean sendHelp(Player player) {
+        player.sendMessage("-------------------------------");
+        player.sendMessage(Messages.getPREFIX() + "§7/fly §8- §7Setzt dich in den Flugmodus.");
+        player.sendMessage("-------------------------------");
+        return true;
+    }
 
-        if (flying) {
+    public boolean handleFly(Player player) {
 
-            if(flyList.contains(player)) return;
+        if (!flyList.contains(player)) {
 
             player.setAllowFlight(true);
             player.setFlying(true);
             flyList.add(player);
 
-            return;
+            return true;
         }
-
-        if(!flyList.contains(player)) return;
 
         player.setFlying(false);
         player.setAllowFlight(false);
         flyList.remove(player);
 
-    }
-
-    public boolean getPlayerInList(Player player) {
-        return flyList.contains(player);
+        return true;
     }
 
 }

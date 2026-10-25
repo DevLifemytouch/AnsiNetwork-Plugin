@@ -1,14 +1,11 @@
 package de.lifemytouch.ansi.admin.misc.teleport.command;
 
-import de.lifemytouch.ansi.core.text.Messages;
+import de.lifemytouch.ansi.core.command.BaseCommand;
 import de.lifemytouch.ansi.admin.misc.teleport.service.TeleportService;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class TeleportCommand implements CommandExecutor {
+public class TeleportCommand extends BaseCommand {
 
     private final TeleportService teleportService;
 
@@ -17,15 +14,12 @@ public class TeleportCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
-                             @NotNull String label, @NotNull String @NotNull [] args) {
+    public String getPermission() {
+        return "ansi.commands.teleport";
+    }
 
-        if (!(sender instanceof Player player)) return true;
-
-        if (!player.hasPermission("ansi.commands.teleport")) {
-            player.sendMessage(Messages.getNO_PERMS());
-            return true;
-        }
+    @Override
+    public boolean onCommand(@NotNull Player player, @NotNull String @NotNull [] args) {
 
         if (args.length == 1) return teleportService.playerToTarget(player, args);
 
